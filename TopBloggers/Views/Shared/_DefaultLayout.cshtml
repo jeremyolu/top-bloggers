@@ -7,18 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-<nav>
-    @Html.Partial("_Navigation")
-</nav>
+    <nav>
+        @Html.Partial("_Navigation")
+    </nav>
     <div class="main">
         @RenderBody()
     </div>
-    <footer>
+    <footer data-aos="fade-left">
         @Html.Partial("_Footer")
     </footer>
 @Scripts.Render("~/bundles/jquery")
-@RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/pagescripts")
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+@RenderSection("Libs", required: false)
 </body>
 </html>
