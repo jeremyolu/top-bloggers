@@ -176,6 +176,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\main-styles.css" />
+    <Content Include="Icons\author.svg" />
+    <Content Include="Icons\cup.svg" />
+    <Content Include="Icons\pen-orange.svg" />
+    <Content Include="Icons\pen.svg" />
+    <Content Include="Icons\thumb-yellow.svg" />
+    <Content Include="Icons\thumb.svg" />
+    <Content Include="Icons\views-light-blue.svg" />
+    <Content Include="Icons\views.svg" />
     <Content Include="Images\BlogArticles\csharp-logo.png" />
     <Content Include="Images\BlogArticles\premier-league.jpg" />
     <Content Include="Images\home-background.jpg" />
