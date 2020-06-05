@@ -134,6 +134,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Icons\facebook.svg" />
+    <Content Include="Icons\instagram.svg" />
+    <Content Include="Icons\linkedin.svg" />
+    <Content Include="Icons\twitter.svg" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
