@@ -12,6 +12,9 @@ namespace TopBloggers
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Lib/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/aos").Include(
+                "~/Lib/aos.2.3.1.js*"));
+
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Lib/modernizr-*"));
 

@@ -19,9 +19,9 @@
     <footer data-aos="fade-left">
         @Html.Partial("_Footer")
     </footer>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/pagescripts")
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-@RenderSection("Libs", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/aos")
+    @Scripts.Render("~/bundles/pagescripts")
+    @RenderSection("Libs", required: false)
 </body>
 </html>

@@ -139,6 +139,7 @@
     <Content Include="Icons\linkedin.svg" />
     <Content Include="Icons\twitter.svg" />
     <None Include="Lib\jquery-3.4.1.intellisense.js" />
+    <Content Include="Lib\aos.2.3.1.js" />
     <Content Include="Lib\jquery-3.4.1.js" />
     <Content Include="Lib\jquery-3.4.1.min.js" />
     <Content Include="Lib\jquery-3.4.1.slim.js" />
