@@ -16,7 +16,7 @@ namespace TopBloggers
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/site.css"));
+                "~/Content/main-styles.css"));
         }
     }
 }
