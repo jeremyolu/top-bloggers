@@ -106,6 +106,37 @@ h1.headline-text {
     padding: 0 30px;
 }
 
+.blog-article-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.blog-article-item h2 {
+    font-size: 30px;
+    height: 60px;
+    padding: 20px 0;
+}
+
+.blog-article-item h3 {
+    padding: 20px;
+}
+
+.blog-article-item p {
+    font-weight: bold;
+    height: 80px;
+}
+
+.blog-article-item {
+    position: relative;
+}
+
+.blog-img {
+    height: 200px;
+    width: 200px;
+}
+
+
 /*FOOTER*/
 .footer-top-content {
     background: #000000;

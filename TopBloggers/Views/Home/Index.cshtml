@@ -1,4 +1,12 @@
-﻿@{
+﻿@model TopBloggers.ViewModels.Home.HomeArticlesViewModel
+
+@if (Model == null)
+{
+    <h2>An error has occured. Please try again later.</h2>
+    return;
+}
+
+@{
     ViewBag.Title = "Home";
 }
 
@@ -10,24 +18,111 @@
     </header>
 
     <div id="home-content" class="container">
-        <section id="top-blog-article-section section-content" data-aos="fade-right">
-            <h1 class="headline-text">TOP BLOG STORIES</h1>
+        <section id="top-blog-article-section section-content">
+            <h1 class="headline-text" data-aos="fade-right">TOP BLOG POSTS</h1>
+            <div class="blog-article-content">
+                @if (Model.TopArticles.Any())
+                {
+                    foreach (var blog in Model.TopArticles)
+                    {
+                        <div class="blog-article-item" data-aos="fade-left">
+                            <img src="~/Images/BlogArticles/@blog.Image" class="blog-img" alt="@blog.Image" />
+                            <div class="blog-article-item-details">
+                                <h2>@blog.Title</h2>
+                                <p>"@blog.Description"</p>
+                                <button>Read Now</button>
+                                <h4>@blog.Category.Name</h4>
+                                <h4>Views: @blog.Views | Likes @blog.Likes</h4>
+                                <hr class="blog-article-item-line" />
+                                <h4>By @blog.Author.Name @blog.Author.Surname - @blog.CreatedDate.ToShortDateString()</h4>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h2>No Blog Articles Found</h2>
+                }
+            </div>
         </section>
 
         <section id="latest-blog-article-section" data-aos="fade-right">
             <h1 class="headline-text">LATEST BLOG POST</h1>
+            <div class="blog-article-content">
+                @if (Model.TopArticles.Any())
+                {
+                    foreach (var blog in Model.LatestArticles)
+                    {
+                        <div class="blog-article-item" data-aos="fade-left">
+                            <img src="~/Images/BlogArticles/@blog.Image" class="blog-img" alt="@blog.Image" />
+                            <div class="blog-article-item-details">
+                                <h2>@blog.Title</h2>
+                                <p>"@blog.Description"</p>
+                                <button>Read Now</button>
+                                <h4>@blog.Category.Name</h4>
+                                <h4>Views: @blog.Views | Likes @blog.Likes</h4>
+                                <hr class="blog-article-item-line" />
+                                <h4>By @blog.Author.Name @blog.Author.Surname - @blog.CreatedDate.ToShortDateString()</h4>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h2>No Latest Blog Articles Found For Month @DateTime.Now.Month</h2>
+                }
+            </div>
         </section>
 
-        <section id="featured-blog-article-section" data-aos="fade-right">
-            <h1 class="headline-text">FEATURED BLOGS</h1>
+        <section id="trending-blog-article-section" data-aos="fade-right">
+            <h1 class="headline-text">TRENDING BLOGS</h1>
+            <div class="blog-article-content">
+                @if (Model.TopArticles.Any())
+                {
+                    foreach (var blog in Model.FeaturedArticles)
+                    {
+                        <div class="blog-article-item" data-aos="fade-left">
+                            <img src="~/Images/BlogArticles/@blog.Image" class="blog-img" alt="@blog.Image" />
+                            <div class="blog-article-item-details">
+                                <h2>@blog.Title</h2>
+                                <p>"@blog.Description"</p>
+                                <button>Read Now</button>
+                                <h4>@blog.Category.Name</h4>
+                                <h4>Views: @blog.Views | Likes @blog.Likes</h4>
+                                <hr class="blog-article-item-line" />
+                                <h4>By @blog.Author.Name @blog.Author.Surname - @blog.CreatedDate.ToShortDateString()</h4>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h2>No Trending Blog Articles At The Moment</h2>
+                }
+            </div>
         </section>
 
-        <section id="category-blog-article-section" data-aos="fade-left">
-            <h1 class="headline-text">LIFESTYLE</h1>
-        </section>
-
-        <section id="category-blog-article-section" data-aos="fade-left">
-            <h1 class="headline-text">CULTURE</h1>
+        <section id="author-popular-section" data-aos="fade-left">
+            <h1 class="headline-text">POPULAR TRENDING AUTHORS</h1>
+            <div class="blog-article-content">
+                @if (Model.TopArticles.Any())
+                {
+                    foreach (var author in Model.PopularAuthors)
+                    {
+                        <div class="blog-article-item" data-aos="fade-left">
+                            <img src="~/Images/Authors/" class="blog-img" alt="" />
+                            <div class="blog-article-item-details">
+                                <h2>@author.Name @author.Surname</h2>
+                                <h4>Blog Articles: @author.Articles.Count</h4>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h2>No Trending Authors At The Moment</h2>
+                }
+            </div>
         </section>
     </div>
 </div>
