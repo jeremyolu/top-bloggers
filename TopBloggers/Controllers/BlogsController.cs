@@ -1,17 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using TopBloggers.Interfaces.Services;
 
 namespace TopBloggers.Controllers
 {
     public class BlogsController : Controller
     {
-        // GET: Blogs
-        public ActionResult Index()
+        private readonly IBlogService _blogService;
+
+        public BlogsController(IBlogService blogService)
         {
-            return View();
+            _blogService = blogService;
+        }
+
+        public ActionResult Index(string search = null)
+        {
+            var model = _blogService.GetBlogArticles(search);
+
+            return View(model);
         }
     }
 }

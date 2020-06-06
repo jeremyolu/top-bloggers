@@ -64,12 +64,8 @@ nav ul.nav-list li a:hover {
 }
 
 /*HOME*/
-#home {
-    position: relative;
-}
-
 #home header h1 {
-    font-size: 80px;
+    font-size: 50px;
     font-weight: bold;
     margin: 0;
 }
@@ -132,6 +128,94 @@ h1.headline-text {
     width: 200px;
 }
 
+/*BLOGS*/
+#blogs header h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#blogs header h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#blogs header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Images/home-background.jpg') no-repeat center/cover;
+    padding: 20px;
+    text-align: center;
+    height: 30vh;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#article-textbox {
+    background: none;
+    font-size: 25px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    border: none;
+    outline: 0;
+    height: 30px;
+    text-align: center;
+    margin-top: 30px;
+    border-bottom: 3px solid #FFFFFF;
+    text-transform: lowercase;
+}
+
+#article-textbox::placeholder {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    text-align: center;
+}
+
+section#search-articles-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+#article-count {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+article.article-listing-item {
+    border-top: 3px solid #000000;
+}
+
+h3.article-listing-title {
+    font-size: 20px;
+    height: 50px;
+}
+
+h5.article-listing-author-date {
+    font-weight: bold;
+}
+
+h5.article-listing-category {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+p.article-listing-description {
+    height: 80px;
+}
+
+p.article-listing-category-name {
+    margin-top: 5px;
+}
+
+span.read-more {
+    font-weight: bold;
+    font-size: 16px;
+}
 
 /*FOOTER*/
 .footer-top-content {

@@ -172,6 +172,7 @@
     <Compile Include="Repositories\Authors\AuthorRepository.cs" />
     <Compile Include="Repositories\Blogs\BlogRepository.cs" />
     <Compile Include="Services\Blogs\BlogService.cs" />
+    <Compile Include="ViewModels\Blogs\BlogsListViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeArticlesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +233,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Blogs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -240,7 +242,6 @@
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Authors\" />
-    <Folder Include="Views\Blogs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\jquery-3.4.1.min.map" />

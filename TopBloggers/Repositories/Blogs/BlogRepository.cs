@@ -20,6 +20,11 @@ namespace TopBloggers.Repositories.Blogs
             return _topBloggersDb.Articles.ToList();
         }
 
+        public List<Article> GetArticles(string search)
+        {
+            return _topBloggersDb.Articles.OrderBy(a => a.Title).Where(a => a.Title.Contains(search) || search == null).ToList();
+        }
+
         public Article GetArticleById(int id)
         {
             return _topBloggersDb.Articles.SingleOrDefault(a => a.AuthorID == id);

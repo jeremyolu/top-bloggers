@@ -3,6 +3,7 @@ using System.Linq;
 using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Models;
+using TopBloggers.ViewModels.Blogs;
 using TopBloggers.ViewModels.Home;
 
 namespace TopBloggers.Services.Blogs
@@ -26,11 +27,8 @@ namespace TopBloggers.Services.Blogs
         public HomeArticlesViewModel GetHomeArticlesViewModel()
         {
             var topBlogArticles = _blogRepository.GetArticles().Where(l => l.Likes >= MinTopLikesMark);
-
             var latestBlogArticles = _blogRepository.GetLatestArticlesForCurrentMonth();
-
             var featuredBlogs = _blogRepository.GetArticles();
-
             var popularAuthors = _authorRepository.GetAuthors();
 
             var model = new HomeArticlesViewModel
@@ -39,6 +37,21 @@ namespace TopBloggers.Services.Blogs
                 LatestArticles = latestBlogArticles,
                 FeaturedArticles = DetermineFeaturedArticle(featuredBlogs),
                 PopularAuthors = DeterminePopularAuthors(popularAuthors)
+            };
+
+            return model;
+        }
+
+        public BlogsListViewModel GetBlogArticles(string search = null)
+        {
+            var articles = _blogRepository.GetArticles(search);
+            var totalArticles = _blogRepository.GetArticles().Count;
+
+            var model = new BlogsListViewModel
+            {
+                Articles = articles,
+                Search = search,
+                TotalArticles = totalArticles
             };
 
             return model;
