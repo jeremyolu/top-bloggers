@@ -184,6 +184,8 @@
     <Content Include="Icons\thumb.svg" />
     <Content Include="Icons\views-light-blue.svg" />
     <Content Include="Icons\views.svg" />
+    <Content Include="Images\Authors\jason-law.jpg" />
+    <Content Include="Images\Authors\maresh-savarinka.jpg" />
     <Content Include="Images\BlogArticles\csharp-logo.png" />
     <Content Include="Images\BlogArticles\premier-league.jpg" />
     <Content Include="Images\home-background.jpg" />
@@ -234,7 +236,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DataAccess\" />
-    <Folder Include="Images\Authors\" />
     <Folder Include="Settings\" />
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Views\Admin\" />

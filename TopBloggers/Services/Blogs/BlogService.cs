@@ -14,7 +14,8 @@ namespace TopBloggers.Services.Blogs
 
         private const int MinTopLikesMark = 10;
         private const int FeaturedCalculateScoreMark = 50;
-        private const int MinPopularAuthorArticles = 2;
+        //implement later
+        private const int MinPopularAuthorArticles = 0;
 
         public BlogService(IBlogRepository blogRepository, IAuthorRepository authorRepository)
         {

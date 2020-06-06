@@ -104,16 +104,16 @@
 
         <section id="author-popular-section" data-aos="fade-left">
             <h1 class="headline-text">POPULAR TRENDING AUTHORS</h1>
-            <div class="blog-article-content">
+            <div class="author-content">
                 @if (Model.TopArticles.Any())
                 {
                     foreach (var author in Model.PopularAuthors)
                     {
-                        <div class="blog-article-item" data-aos="fade-left">
-                            <img src="~/Images/Authors/" class="blog-img" alt="" />
-                            <div class="blog-article-item-details">
+                        <div class="author-item" data-aos="fade-left">
+                            <img src="~/Images/Authors/@author.ProfileImage" class="author-img" alt="@author.Name-@author.Surname-author-image" />
+                            <div class="author-item-details">
                                 <h2>@author.Name @author.Surname</h2>
-                                <h4>Blog Articles: @author.Articles.Count</h4>
+                                <h4>Articles: @author.Articles.Count</h4>
                             </div>
                         </div>
                     }

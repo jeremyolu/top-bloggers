@@ -106,7 +106,7 @@ h1.headline-text {
     padding: 0 30px;
 }
 
-.blog-article-content {
+.blog-article-content, .author-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
@@ -127,11 +127,7 @@ h1.headline-text {
     height: 80px;
 }
 
-.blog-article-item {
-    position: relative;
-}
-
-.blog-img {
+.blog-img, .author-img {
     height: 200px;
     width: 200px;
 }
