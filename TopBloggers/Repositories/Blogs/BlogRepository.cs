@@ -22,12 +22,12 @@ namespace TopBloggers.Repositories.Blogs
 
         public List<Article> GetArticles(string search)
         {
-            return _topBloggersDb.Articles.OrderBy(a => a.Title).Where(a => a.Title.Contains(search) || search == null).ToList();
+            return _topBloggersDb.Articles.OrderBy(a => a.Title).Where(a => a.Title.Contains(search) || a.Author.Name.Contains(search) || a.Author.Surname.Contains(search) || search == null).ToList();
         }
 
         public Article GetArticleById(int id)
         {
-            return _topBloggersDb.Articles.SingleOrDefault(a => a.AuthorID == id);
+            return _topBloggersDb.Articles.SingleOrDefault(a => a.BlogArticleID == id);
         }
 
         public List<Article> GetLatestArticlesForCurrentMonth()

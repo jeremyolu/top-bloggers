@@ -7,5 +7,6 @@ namespace TopBloggers.Interfaces.Services
     {
         HomeArticlesViewModel GetHomeArticlesViewModel();
         BlogsListViewModel GetBlogArticles(string search = null);
+        BlogArticleViewModel GetBlogArticleViewModel(int id);
     }
 }

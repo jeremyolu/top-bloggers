@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Models;
@@ -45,19 +46,52 @@ namespace TopBloggers.Services.Blogs
         public BlogsListViewModel GetBlogArticles(string search = null)
         {
             var articles = _blogRepository.GetArticles(search);
-            var totalArticles = _blogRepository.GetArticles().Count;
 
             var model = new BlogsListViewModel
             {
                 Articles = articles,
                 Search = search,
-                TotalArticles = totalArticles
+                TotalArticles = articles.Count
             };
 
             return model;
         }
 
-        private List <Article> DetermineFeaturedArticle(List<Article> articles)
+        public BlogArticleViewModel GetBlogArticleViewModel(int id)
+        {
+            var blogArticle = _blogRepository.GetArticleById(id);
+            var authorArticles = _blogRepository.GetArticlesByAuthorId(blogArticle.Author.AuthorID);
+            var relatedArticles = _blogRepository.GetArticlesByCategoryId(blogArticle.CategoryID).Where(a => a.BlogArticleID != id);
+
+            blogArticle.Title = CapitalizeTitle(blogArticle.Title);
+
+            var model = new BlogArticleViewModel
+            {
+                BlogArticle = blogArticle,
+                AuthorArticles = authorArticles,
+                RelatedArticles = relatedArticles
+            };
+
+            return model;
+        }
+
+        private string CapitalizeTitle(string title)
+        {
+            return Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(title.ToLower());
+        }
+
+        private string CreateFriendlyUrl(Article article)
+        {
+            var articleId = article.BlogArticleID;
+            var articleTitle = article.Title;
+
+            var url = $"{articleId} {articleTitle}";
+            url = url.Replace(" ", "-");
+
+            return url;
+        }
+
+        private List<Article> DetermineFeaturedArticle(List<Article> articles)
         {
             var featured = new List<Article>();
 

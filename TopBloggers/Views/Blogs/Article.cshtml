@@ -1,0 +1,52 @@
+﻿@model TopBloggers.ViewModels.Blogs.BlogArticleViewModel
+
+@if (Model == null)
+{
+    return;
+}
+
+@{
+    var metaTitle = Model.BlogArticle.Title;
+    ViewBag.Title = metaTitle;
+}
+
+<div id="article">
+    <header data-aos="fade-right">
+        <h1>@Model.BlogArticle.Title</h1>
+        <h3>By @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname</h3>
+    </header>
+
+    <div id="article-content-container" class="container" data-aos="fade-left">
+        <article id="@Model.BlogArticle.Title">
+            <h1>@Model.BlogArticle.Title</h1>
+            <h4>Published: @Model.BlogArticle.CreatedDate.ToShortDateString()</h4>
+            <h4>Views: @Model.BlogArticle.Views - Likes: @Model.BlogArticle.Likes</h4>
+            <hr />
+            <p>@Model.BlogArticle.Description</p>
+            <div class="article-text-section">
+                <p class="article-text">@Model.BlogArticle.Text</p>
+            </div>
+        </article>
+        <div class="author-blogs-container">
+            <h3>Other article by @Model.BlogArticle.Author.Name</h3>
+        </div>
+        <div class="related-articles-section">
+            <h2>Related Articles</h2>
+            @if (Model.RelatedArticles.Any())
+            {
+                foreach (var article in Model.RelatedArticles)
+                {
+                    <article class="article-listing-item">
+                        <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
+                        <img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" />
+                        <h3 class="article-listing-title">@article.Title</h3>
+                        <p class="article-listing-description">@article.Description @Html.ActionLink("read more...", "Article", new { id = article.BlogArticleID }, new { @class = "article-listing-title-link" })</p>
+                        <h5 class="article-listing-category">Category</h5>
+                        <p class="article-listing-category-name">@article.Category.Name</p>
+                    </article>
+                }
+            }
+        </div>
+    </div>
+
+</div>

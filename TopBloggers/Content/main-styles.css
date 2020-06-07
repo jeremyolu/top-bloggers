@@ -217,6 +217,25 @@ span.read-more {
     font-size: 16px;
 }
 
+/*ARTICLE BLOG*/
+#article header {
+    background: black;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+p.article-text {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
 /*FOOTER*/
 .footer-top-content {
     background: #000000;

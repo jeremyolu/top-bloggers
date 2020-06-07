@@ -18,5 +18,12 @@ namespace TopBloggers.Controllers
 
             return View(model);
         }
+
+        public ActionResult Article(int id)
+        {
+            var model = _blogService.GetBlogArticleViewModel(id);
+
+            return View(model);
+        }
     }
 }
