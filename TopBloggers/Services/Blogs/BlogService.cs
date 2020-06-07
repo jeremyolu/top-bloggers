@@ -31,16 +31,16 @@ namespace TopBloggers.Services.Blogs
 
         public HomeArticlesViewModel GetHomeArticlesViewModel()
         {
-            var topBlogArticles = _blogRepository.GetArticles().Where(l => l.Likes >= MinTopLikesMark);
+            var topBlogArticles = _blogRepository.GetArticles().Where(l => l.Likes >= MinTopLikesMark).ToList();
             var latestBlogArticles = _blogRepository.GetLatestArticlesForCurrentMonth();
             var featuredBlogs = _blogRepository.GetArticles();
             var popularAuthors = _authorRepository.GetAuthors();
 
             var model = new HomeArticlesViewModel
             {
-                TopArticles = topBlogArticles,
-                LatestArticles = latestBlogArticles,
-                FeaturedArticles = DetermineFeaturedArticle(featuredBlogs),
+                TopArticles = topBlogArticles.GenerateUrls(),
+                LatestArticles = latestBlogArticles.GenerateUrls(),
+                FeaturedArticles = DetermineFeaturedArticle(featuredBlogs.GenerateUrls()),
                 PopularAuthors = DeterminePopularAuthors(popularAuthors)
             };
 

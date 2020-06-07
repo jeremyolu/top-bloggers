@@ -242,6 +242,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DataAccess\" />
+    <Folder Include="Images\Backgrounds\" />
     <Folder Include="Settings\" />
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Views\Admin\" />
