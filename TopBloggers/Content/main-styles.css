@@ -141,7 +141,7 @@ h1.headline-text {
     align-items: center;
 }
 
-#article-textbox {
+.search-textbox {
     background: none;
     width: 350px;
     font-size: 25px;
@@ -279,6 +279,29 @@ hr.ma-line {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+
+/*AUTHORS*/
+#authors header h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#authors header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Images/home-background.jpg') no-repeat center/cover;
+    padding: 20px;
+    text-align: center;
+    height: 30vh;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+
 /*FOOTER*/
 .footer-top-content {
     background: #000000;

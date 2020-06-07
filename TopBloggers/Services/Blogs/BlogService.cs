@@ -147,6 +147,16 @@ namespace TopBloggers.Services.Blogs
             return articles;
         }
 
+        public static List<Author> GenerateUrls(this List<Author> authors)
+        {
+            foreach (var author in authors)
+            {
+                author.AuthorUrl = $"{author.Name}-{author.Surname}".ToLower();
+            }
+
+            return authors;
+        }
+
         public static List<Article> ShortenDescription(this List<Article> articles)
         {
             foreach (var article in articles)

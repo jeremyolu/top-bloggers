@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TopBloggers.Models;
 
 namespace TopBloggers.Interfaces.Repositories
@@ -10,5 +6,7 @@ namespace TopBloggers.Interfaces.Repositories
     public interface IAuthorRepository
     {
         List<Author> GetAuthors();
+        List<Author> GetAuthors(string search);
+        Author GetAuthorById(int id);
     }
 }

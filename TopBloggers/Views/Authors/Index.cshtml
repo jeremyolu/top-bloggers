@@ -1,0 +1,48 @@
+﻿@model TopBloggers.ViewModels.Authors.AuthorsListViewModel
+
+@{
+    ViewBag.Title = "Authors";
+}
+
+<div id="authors">
+    <header data-aos="fade-right">
+        <h1>AUTHORS</h1>
+        <form>
+            <input type="text" name="search" class="search-textbox" placeholder="search authors" />
+        </form>
+    </header>
+
+    <div id="author-search-container" class="container" data-aos="fade-left">
+        @if (Model.Search.IsEmpty())
+        {
+            <h4 id="author-count">Total Results: @Model.TotalAuthors</h4>
+        }
+        else
+        {
+            <h4 id="author-search">searched author(s): "@Model.Search"</h4>
+            <h4 id="author-count">Total Results: @Model.TotalAuthors</h4>
+        }
+
+        <section id="search-authors-list">
+            <div class="author-content">
+                @if (Model.Authors.Any())
+                {
+                    foreach (var author in Model.Authors)
+                    {
+                        <div class="author-item" data-aos="fade-left">
+                        <a href="/authors/@author.AuthorUrl"><img src="~/Images/Authors/@author.ProfileImage" class="author-img" alt="@author.Name-@author.Surname-author-image" /></a>
+                            <div class="author-item-details">
+                                <h2>@author.Name @author.Surname</h2>
+                                <h4>Articles: @author.Articles.Count</h4>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h2>No Authors Found</h2>
+                }
+            </div>
+        </section>
+    </div>
+</div>
