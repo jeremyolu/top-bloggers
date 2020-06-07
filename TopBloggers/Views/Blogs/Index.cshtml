@@ -4,46 +4,45 @@
     ViewBag.Title = "Blogs";
 }
 
-    <div id="blogs">
-        <header data-aos="fade-right">
-            <h1>SEARCH BLOG ARTICLES</h1>
-            <h3>Search for various blog articles from various categories</h3>
-            <form>
-                <input type="text" name="search" id="article-textbox" placeholder="search articles"/>
-            </form>
-        </header>
+<div id="blogs">
+    <header data-aos="fade-right">
+        <h1>SEARCH BLOG ARTICLES</h1>
+        <h3>Search for various blog articles from various categories</h3>
+        <form>
+            <input type="text" name="search" id="article-textbox" placeholder="search articles, authors, categories"/>
+        </form>
+    </header>
 
-        <div id="blog-search-container" class="container" data-aos="fade-left">
-            @if (Model.Search.IsEmpty())
+    <div id="blog-search-container" class="container" data-aos="fade-left">
+        @if (Model.Search.IsEmpty())
+        {
+            <h4 id="article-count">Total Results: @Model.TotalArticles</h4>
+        }
+        else
+        {
+            <h4 id="article-search">searched article(s): "@Model.Search"</h4>
+            <h4 id="article-count">Total Results: @Model.TotalArticles</h4>
+        }
+
+        <section id="search-articles-list">
+            @if (Model.Articles.Any())
             {
-                <h4 id="article-count">Total Results: @Model.TotalArticles</h4>
+                foreach (var article in Model.Articles)
+                {
+                    <article class="article-listing-item">
+                        <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
+                        <img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" />
+                        <h3><a class="article-listing-title-link"href="/blogs/article/@article.Url">@article.Title</a></h3>
+                        <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link"href="/blogs/article/@article.Url">...read more</a></span></p>
+                        <h5 class="article-listing-category">Category</h5>
+                        <p class="article-listing-category-name">@article.Category.Name</p>
+                    </article>
+                }
             }
             else
             {
-                <h4 id="article-search">searched article(s): "@Model.Search"</h4>
-                <h4 id="article-count">Total Results: @Model.TotalArticles</h4>
+                <h2>No Articles Found</h2>
             }
-
-            <section id="search-articles-list">
-                @if (Model.Articles.Any())
-                {
-                    foreach (var article in Model.Articles)
-                    {
-                        <article class="article-listing-item">
-                            <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
-                            <img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" />
-                            @Html.ActionLink(article.Title, "Article", new { id = article.BlogArticleID }, new { @class = "article-listing-title-link" })
-                            <h3 class="article-listing-title">@article.Title</h3>
-                            <p class="article-listing-description">@article.Description <span class="read-more">...read more</span></p>
-                            <h5 class="article-listing-category">Category</h5>
-                            <p class="article-listing-category-name">@article.Category.Name</p>
-                        </article>
-                    }
-                }
-                else
-                {
-                    <h2>No Articles Found</h2>
-                }
-            </section>
-        </div>
+        </section>
     </div>
+</div>

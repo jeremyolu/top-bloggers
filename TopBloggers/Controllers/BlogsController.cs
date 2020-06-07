@@ -19,9 +19,15 @@ namespace TopBloggers.Controllers
             return View(model);
         }
 
-        public ActionResult Article(int id)
+        [Route("blogs/article/{id}={title}")]
+        public ActionResult Article(int id, string title)
         {
             var model = _blogService.GetBlogArticleViewModel(id);
+
+            if (id != model.BlogId || title != model.FormattedTitle)
+            {
+                return HttpNotFound();
+            }
 
             return View(model);
         }

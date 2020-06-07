@@ -11,6 +11,8 @@ namespace TopBloggers
 
             routes.LowercaseUrls = true;
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

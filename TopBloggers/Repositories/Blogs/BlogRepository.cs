@@ -22,7 +22,7 @@ namespace TopBloggers.Repositories.Blogs
 
         public List<Article> GetArticles(string search)
         {
-            return _topBloggersDb.Articles.OrderBy(a => a.Title).Where(a => a.Title.Contains(search) || a.Author.Name.Contains(search) || a.Author.Surname.Contains(search) || search == null).ToList();
+            return _topBloggersDb.Articles.OrderBy(a => a.Title).Where(a => a.Title.Contains(search) || a.Author.Name.Contains(search) || a.Author.Surname.Contains(search) || a.Category.Name.Contains(search) || search == null).ToList();
         }
 
         public Article GetArticleById(int id)

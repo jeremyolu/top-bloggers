@@ -147,6 +147,7 @@
     <Compile Include="Models\Article.cs">
       <DependentUpon>TopBloggersModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticlesFields.cs" />
     <Compile Include="Models\Author.cs">
       <DependentUpon>TopBloggersModel.tt</DependentUpon>
     </Compile>
