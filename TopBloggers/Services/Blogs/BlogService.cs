@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Web;
 using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Models;
-using TopBloggers.Services.Helpers;
 using TopBloggers.ViewModels.Blogs;
 using TopBloggers.ViewModels.Home;
 
