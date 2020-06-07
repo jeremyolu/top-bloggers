@@ -189,6 +189,7 @@ h3.article-listing-title {
 
 h5.article-listing-author-date {
     font-weight: bold;
+    font-style: italic;
 }
 
 h5.article-listing-category {
@@ -204,9 +205,9 @@ p.article-listing-category-name {
     margin-top: 5px;
 }
 
-span.read-more {
+a.read-more-link {
     font-weight: bold;
-    font-size: 16px;
+    color: #000000;
 }
 
 /*ARTICLE BLOG*/
@@ -228,10 +229,56 @@ p.article-text {
     letter-spacing: 2px;
 }
 
-a.read-more-link {
-    color: #000000;
+.article-contents {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-column-gap: 10px;
 }
 
+h1.article-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+h4.article-author {
+    font-style: italic;
+}
+
+h2.more-articles-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+hr.article-line {
+    background-color: #000000;
+    height: 2px;
+    border: none;
+}
+
+.blog-img-ma {
+    height: 150px;
+    width: 150px;
+}
+
+h3.article-listing-title-ma {
+    font-size: 18px;
+}
+
+hr.ma-line {
+    background-color: #000000;
+    height: 2px;
+    border: none;
+}
+
+.related-article-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 /*FOOTER*/
 .footer-top-content {
     background: #000000;

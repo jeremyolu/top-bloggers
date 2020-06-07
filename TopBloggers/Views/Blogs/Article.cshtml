@@ -1,52 +1,66 @@
 ﻿@model TopBloggers.ViewModels.Blogs.BlogArticleViewModel
 
-@if (Model == null)
-{
-    <h2>Opps</h2>
-    return;
-}
-
 @{
     var metaTitle = Model.BlogArticle.Title;
     ViewBag.Title = metaTitle;
 }
 
 <div id="article">
-    <header data-aos="fade-right">
-        <h1>@Model.BlogArticle.Title</h1>
-        <h3>By @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname</h3>
-    </header>
-
     <div id="article-content-container" class="container" data-aos="fade-left">
-        <article id="@Model.BlogArticle.Title">
-            <h1>@Model.BlogArticle.Title</h1>
-            <h4>Published: @Model.BlogArticle.CreatedDate.ToShortDateString()</h4>
-            <h4>Views: @Model.BlogArticle.Views - Likes: @Model.BlogArticle.Likes</h4>
-            <hr />
-            <p>@Model.BlogArticle.Description</p>
-            <div class="article-text-section">
-                <p class="article-text">@Model.BlogArticle.Text</p>
+        <div class="article-contents">
+            <article id="@Model.BlogArticle.BlogArticleID" class="article-item">
+                <img src="~/Images/BlogArticles/@Model.BlogArticle.Image" class="article-img" alt="@Model.BlogArticle.Image" />
+                <h1 class="article-title">@Model.BlogArticle.Title</h1>
+                <h4 class="article-author">By @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname - @Model.BlogArticle.CreatedDate.ToShortDateString()</h4>
+                <p>@Model.BlogArticle.Description</p>
+                <div class="article-text-section">
+                    <p class="article-text">@Model.BlogArticle.Text</p>
+                </div>
+            </article>
+            <div class="more-articles-container">
+                <h2 class="more-articles-title">More Articles by @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname</h2>
+                @if (Model.AuthorArticles.Any())
+                {
+                    foreach (var article in Model.AuthorArticles)
+                    {
+                        <article>
+                            <h3 class="article-listing-title-ma">@article.Title</h3>
+                            <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img-ma" alt="@article.Image" data-aos="fade-up"/></a>
+                            <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
+                            <p class="article-listing-description-ma">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                            <hr class="ma-line"/>
+                        </article>
+                    }
+                }
+                else
+                {
+                    <h3>No Other Articles By @Model.BlogArticle.Author.Name</h3>
+                }
             </div>
-        </article>
-        <div class="author-blogs-container">
-            <h3>Other article by @Model.BlogArticle.Author.Name</h3>
         </div>
         <div class="related-articles-section">
-            <h2>Related Articles</h2>
-            @if (Model.RelatedArticles.Any())
-            {
-                foreach (var article in Model.RelatedArticles)
-                {
-                    <article class="article-listing-item">
-                        <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
-                        <img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" />
-                        <h3 class="article-listing-title">@article.Title</h3>
-                        <p class="article-listing-description"><a href="/blogs/article/@Model.BlogArticleUrl">@article.Description</a></p>
-                        <h5 class="article-listing-category">Category</h5>
-                        <p class="article-listing-category-name">@article.Category.Name</p>
-                    </article>
-                }
-            }
+            <h2>Related @Model.BlogArticle.Category.Name Articles</h2>
+            <hr class="article-line"/>
+            <div class="related-article-items">
+                <div class="related-article-item">
+                    @if (Model.RelatedArticles.Any())
+                    {
+                        foreach (var article in Model.RelatedArticles)
+                        {
+                            <article>
+                                <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
+                                <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img-ma" alt="@article.Image" data-aos="fade-up" /></a>
+                                <h3 class="article-listing-title">@article.Title</h3>
+                                <p class="article-listing-description-ma">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                            </article>
+                        }
+                    }
+                    else
+                    {
+                        <h3>No Related Articles</h3>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 

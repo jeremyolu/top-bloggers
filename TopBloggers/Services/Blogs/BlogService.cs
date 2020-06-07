@@ -72,7 +72,7 @@ namespace TopBloggers.Services.Blogs
 
             var formatTitle = GenerateFriendlyUrl(blogArticle.Title);
 
-            var authorArticles = _blogRepository.GetArticlesByAuthorId(blogArticle.Author.AuthorID);
+            var authorArticles = _blogRepository.GetArticlesByAuthorId(blogArticle.Author.AuthorID).Where(a => a.BlogArticleID != id).ToList();
             var relatedArticles = _blogRepository.GetArticlesByCategoryId(blogArticle.CategoryID).Where(a => a.BlogArticleID != id);
 
             blogArticle.Title = CapitalizeTitle(blogArticle.Title);
