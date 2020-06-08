@@ -63,6 +63,12 @@ nav ul.nav-list li a:hover {
     }
 }
 
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 /*HOME*/
 #home header h1 {
     font-size: 50px;
@@ -299,6 +305,70 @@ hr.ma-line {
     flex-direction: column;
     text-align: center;
     align-items: center;
+}
+
+/*PROFILE*/
+#profile {
+    background: #f2f2f2;
+    padding-bottom: 30px;
+}
+
+#profile header {
+    padding: 30px 0 0;
+}
+
+h1.author-profile-name-title {
+    display: inline;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+section.author-section {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-column-gap: 10px;
+    margin-top: 20px;
+}
+
+
+h2.profile-section-title {
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+h2.left {
+    text-align: left;
+}
+
+.author-profile-section-container {
+    padding: 0 20px;
+}
+
+#author-profile-details-section {
+    height: 580px;
+}
+
+.profile-img {
+    height: 150px;
+    width: 150px;
+    text-align: center;
+}
+
+h3.author-titles {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.author-profile-section-container {
+    background: #ffffff;
+    color: #000000;
+}
+
+.author-profile-details {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 10px;
 }
 
 
