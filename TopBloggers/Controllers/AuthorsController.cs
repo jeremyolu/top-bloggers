@@ -29,6 +29,11 @@ namespace TopBloggers.Controllers
                 return HttpNotFound();
             }
 
+            if (string.IsNullOrEmpty(model.AuthorArticles[0].Url))
+            {
+                return HttpNotFound();
+            }
+
             return View(model);
         }
     }

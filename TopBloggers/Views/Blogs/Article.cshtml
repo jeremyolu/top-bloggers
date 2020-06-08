@@ -11,8 +11,9 @@
             <article id="@Model.BlogArticle.BlogArticleID" class="article-item">
                 <img src="~/Images/BlogArticles/@Model.BlogArticle.Image" class="article-img" alt="@Model.BlogArticle.Image" />
                 <h1 class="article-title">@Model.BlogArticle.Title</h1>
-                <h4 class="article-author">By @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname - @Model.BlogArticle.CreatedDate.ToShortDateString()</h4>
+                <h4 class="article-author"><a href="/authors/profile/@Model.AuthorUrl">By @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname</a> - @Model.BlogArticle.CreatedDate.ToShortDateString()</h4>
                 <p>@Model.BlogArticle.Description</p>
+                <span><i class="fa fa-eye"></i> @Model.BlogArticle.Views views <i class="fa fa-thumbs-o-up"></i> @Model.BlogArticle.Likes likes</span>
                 <div class="article-text-section">
                     <p class="article-text">@Model.BlogArticle.Text</p>
                 </div>

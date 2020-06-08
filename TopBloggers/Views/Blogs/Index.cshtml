@@ -9,7 +9,7 @@
         <h1>SEARCH BLOG ARTICLES</h1>
         <h3>Search for various blog articles from various categories</h3>
         <form>
-            <input type="text" name="search" id="article-textbox" placeholder="search articles, authors, categories"/>
+            <input type="text" name="search" class="search-textbox" placeholder="search articles, authors, categories"/>
         </form>
     </header>
 
@@ -31,9 +31,10 @@
                 {
                     <article class="article-listing-item">
                         <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
-                        <img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" />
+                        <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" /></a>
                         <h3><a class="article-listing-title-link"href="/blogs/article/@article.Url">@article.Title</a></h3>
                         <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link"href="/blogs/article/@article.Url">...read more</a></span></p>
+                        <span><i class="fa fa-eye"></i> @article.Views views <i class="fa fa-thumbs-o-up"></i> @article.Likes likes</span>
                         <h5 class="article-listing-category">Category</h5>
                         <p class="article-listing-category-name">@article.Category.Name</p>
                     </article>

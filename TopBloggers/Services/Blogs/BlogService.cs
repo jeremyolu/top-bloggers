@@ -39,7 +39,7 @@ namespace TopBloggers.Services.Blogs
                 TopArticles = topBlogArticles.GenerateUrls(),
                 LatestArticles = latestBlogArticles.GenerateUrls(),
                 FeaturedArticles = DetermineFeaturedArticle(featuredBlogs.GenerateUrls()),
-                PopularAuthors = DeterminePopularAuthors(popularAuthors)
+                PopularAuthors = DeterminePopularAuthors(popularAuthors).GenerateUrls()
             };
 
             return model;
@@ -71,7 +71,10 @@ namespace TopBloggers.Services.Blogs
             var formatTitle = GenerateFriendlyUrl(blogArticle.Title);
 
             var authorArticles = _blogRepository.GetArticlesByAuthorId(blogArticle.Author.AuthorID).Where(a => a.BlogArticleID != id).ToList();
-            var relatedArticles = _blogRepository.GetArticlesByCategoryId(blogArticle.CategoryID).Where(a => a.BlogArticleID != id);
+            var relatedArticles = _blogRepository.GetArticlesByCategoryId(blogArticle.CategoryID).Where(a => a.BlogArticleID != id).ToList();
+
+            var author = _authorRepository.GetAuthorById(blogArticle.AuthorID);
+            var authorUrl = $"{author.AuthorID}-{author.Name}{author.Surname}".ToLower();
 
             blogArticle.Title = CapitalizeTitle(blogArticle.Title);
 
@@ -81,10 +84,11 @@ namespace TopBloggers.Services.Blogs
             {
                 BlogArticle = blogArticle,
                 BlogId = id,
+                AuthorUrl = authorUrl,
                 FormattedTitle = formatTitle,
                 BlogArticleUrl = formattedUrl,
-                AuthorArticles = authorArticles,
-                RelatedArticles = relatedArticles
+                AuthorArticles = authorArticles.GenerateUrls(),
+                RelatedArticles = relatedArticles.GenerateUrls()
             };
 
             return model;
@@ -149,7 +153,7 @@ namespace TopBloggers.Services.Blogs
         {
             foreach (var author in authors)
             {
-                author.AuthorUrl = $"{author.Name}-{author.Surname}".ToLower();
+                author.AuthorUrl = $"{author.AuthorID}-{author.Name}{author.Surname}".ToLower();
             }
 
             return authors;

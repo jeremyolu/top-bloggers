@@ -11,9 +11,9 @@
         <h3>All the latest articles about various topics in one place</h3>
     </header>
 
-    <div id="home-content" class="container">
+    <div id="home-content" class="container" data-aos="fade-up">
         <section id="top-blog-article-section section-content">
-            <h1 class="headline-text" data-aos="fade-right">TOP TRENDING BLOG POSTS</h1>
+            <h1 class="headline-text">TOP TRENDING BLOG POSTS</h1>
             <div class="blog-article-content">
                 @if (Model.TopArticles.Any())
                 {
@@ -21,7 +21,7 @@
                     {
                         <article class="article-listing-item">
                             <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
-                            <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" /></a>
+                            <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up"/></a>
                             <h3><a class="article-listing-title-link" href="/blogs/article/@article.Url">@article.Title</a></h3>
                             <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
                             <span><i class="fa fa-eye"></i> @article.Views views <i class="fa fa-thumbs-o-up"></i> @article.Likes likes</span>
@@ -95,9 +95,9 @@
                     foreach (var author in Model.PopularAuthors)
                     {
                         <div class="author-item" data-aos="fade-left">
-                            <img src="~/Images/Authors/@author.ProfileImage" class="author-img" alt="@author.Name-@author.Surname-author-image" />
+                            <a href="/authors/profile/@author.AuthorUrl"><img src="~/Images/Authors/@author.ProfileImage" class="author-img" alt="@author.Name-@author.Surname-author-image" /></a>
                             <div class="author-item-details">
-                                <h2>@author.Name @author.Surname</h2>
+                                <a href="/authors/profile/@author.AuthorUrl"><h2>@author.Name @author.Surname</h2></a>
                                 <h4>Articles: @author.Articles.Count</h4>
                             </div>
                         </div>

@@ -9,6 +9,7 @@ namespace TopBloggers.ViewModels.Blogs
         public int BlogId { get; set; }
         public string FormattedTitle { get; set; }
         public string BlogArticleUrl { get; set; }
+        public string AuthorUrl { get; set; }
         public List<Article> AuthorArticles { get; set; }
         public IEnumerable<Article> RelatedArticles { get; set; }
     }

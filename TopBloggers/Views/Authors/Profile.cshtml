@@ -1,3 +1,53 @@
 ﻿@model TopBloggers.ViewModels.Authors.AuthorViewModel
-    
-@Model.Author.Name
+
+@{
+    ViewBag.Title = Model.Author.Name + Model.Author.Surname;
+}
+
+<div id="profile">
+    <div id="profile-content" class="container">
+        <header>
+            <h1 class="author-profile-name-title">@Model.Author.Name @Model.Author.Surname</h1>
+        </header>
+        <section id="@Model.Author.AuthorUrl" class="author-section">
+            <div id="author-profile-details-section" class="author-profile-section-container">
+                <h2 class="profile-section-title">PROFILE DETAILS</h2>
+                <hr/>
+                <img src="~/Images/Authors/@Model.Author.ProfileImage" class="profile-img center-block" alt="profile-img"/>
+                <div class="author-profile-details">
+                    <h3 class="author-titles">AUTHOR ID</h3><h3 class="author-titles">@Model.Author.AuthorID</h3>
+                    <h3 class="author-titles">NAME</h3><h3 class="author-titles">@Model.Author.Name @Model.Author.Surname</h3>
+                    <h3 class="author-titles">ARTICLES</h3><h3 class="author-titles">@Model.Author.Articles.Count</h3>
+                    <h3 class="author-titles">TOTAL VIEWS </h3><h3 class="author-titles"><i class="fa fa-eye"></i> @Model.TotalViews</h3>
+                </div>
+                <h3 class="author-item-details"><a href="mailto:@Model.Author.Email">@Model.Author.Email</a></h3>
+            </div>
+            <div id="author-profile-articles" class="author-profile-section-container">
+                <h2 class="profile-section-title left">ARTICLES</h2>
+                <hr/>
+                <section class="articles-profile-section">
+                    @if (Model.Author.Articles.Any())
+                    {
+                        foreach (var article in Model.AuthorArticles)
+                        {
+                            <article class="article-listing-item-profile">
+                                <h5 class="article-listing-author-date">@article.CreatedDate.ToShortDateString()</h5>
+                                <a href="~/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up"/></a>
+                                <h3><a class="article-listing-title-link" href="/blogs/article/@article.Url">@article.Title</a></h3>
+                                <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                                <span><i class="fa fa-eye"></i> @article.Views views <i class="fa fa-thumbs-o-up"></i> @article.Likes likes</span>
+                                <h5 class="article-listing-category">Category</h5>
+                                <p class="article-listing-category-name">@article.Category.Name</p>
+                            </article>
+                            <hr/>
+                        }
+                    }
+                    else
+                    {
+                        <h2>No Articles Found</h2>
+                    }
+                </section>
+            </div>
+        </section>
+    </div>
+</div>
