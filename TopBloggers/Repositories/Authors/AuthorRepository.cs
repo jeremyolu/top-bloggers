@@ -29,5 +29,10 @@ namespace TopBloggers.Repositories.Authors
         {
             return _topBloggersDb.Authors.SingleOrDefault(a => a.AuthorID == id);
         }
+
+        public Author GetAuthorByEmail(string email)
+        {
+            return _topBloggersDb.Authors.FirstOrDefault(a => a.Email == email);
+        }
     }
 }

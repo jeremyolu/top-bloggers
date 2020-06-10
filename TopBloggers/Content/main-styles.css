@@ -371,6 +371,64 @@ h3.author-titles {
     grid-column-gap: 10px;
 }
 
+/*REGISTER*/
+.author-register-form-container h1{
+    font-size: 35px;
+}
+
+label {
+    font-weight: bold;
+    color: #000000;
+}
+
+.input-area {
+    margin-bottom: 10px;
+}
+
+.input-contact-field {
+    font-family: 'Oswald', sans-serif;
+    background: #f1f1f1;
+    width: 100%;
+    letter-spacing: 2px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+}
+
+.input-contact-field:focus {
+    background-color: #DDDDDD;
+    outline: none;
+    transition: 3s;
+}
+
+.signin-container {
+    background: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+span.validation-error, .error{
+    color: #FF0000;
+}
+
+.fa-info {
+    font-size: 18px;
+}
+/*LOGIN*/
+.author-register-form-container h1 {
+    font-size: 35px;
+}
+
+.signup-container {
+    background: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
 /*FOOTER*/
 .footer-top-content {

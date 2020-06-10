@@ -8,5 +8,6 @@ namespace TopBloggers.Interfaces.Repositories
         List<Author> GetAuthors();
         List<Author> GetAuthors(string search);
         Author GetAuthorById(int id);
+        Author GetAuthorByEmail(string email);
     }
 }

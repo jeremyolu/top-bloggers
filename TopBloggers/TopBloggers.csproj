@@ -134,7 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BlogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -143,16 +143,17 @@
     </Compile>
     <Compile Include="Interfaces\Repositories\IAuthorRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBlogRepository.cs" />
+    <Compile Include="Interfaces\Services\IAccountService.cs" />
     <Compile Include="Interfaces\Services\IAuthorService.cs" />
     <Compile Include="Interfaces\Services\IBlogService.cs" />
     <Compile Include="Models\Article.cs">
       <DependentUpon>TopBloggersModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ArticlesFields.cs" />
+    <Compile Include="Models\ArticlePartial.cs" />
     <Compile Include="Models\Author.cs">
       <DependentUpon>TopBloggersModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AuthorsFields.cs" />
+    <Compile Include="Models\AuthorPartial.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>TopBloggersModel.tt</DependentUpon>
     </Compile>
@@ -174,9 +175,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Authors\AuthorRepository.cs" />
     <Compile Include="Repositories\Blogs\BlogRepository.cs" />
+    <Compile Include="Services\Account\AccountService.cs" />
     <Compile Include="Services\Authors\AuthorService.cs" />
     <Compile Include="Services\Blogs\BlogService.cs" />
     <Compile Include="Services\Helpers\TextHelperService.cs" />
+    <Compile Include="ViewModels\Account\AddAuthorViewModel.cs" />
+    <Compile Include="ViewModels\Account\AuthorAccountViewModel.cs" />
     <Compile Include="ViewModels\Authors\AuthorsListViewModel.cs" />
     <Compile Include="ViewModels\Authors\AuthorViewModel.cs" />
     <Compile Include="ViewModels\Blogs\BlogArticleViewModel.cs" />
@@ -184,6 +188,7 @@
     <Compile Include="ViewModels\Home\HomeArticlesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\account-style.css" />
     <Content Include="Content\main-styles.css" />
     <Content Include="Icons\author.svg" />
     <Content Include="Icons\cup.svg" />
@@ -191,6 +196,7 @@
     <Content Include="Icons\pen.svg" />
     <Content Include="Icons\thumb-yellow.svg" />
     <Content Include="Icons\thumb.svg" />
+    <Content Include="Icons\user.svg" />
     <Content Include="Icons\views-light-blue.svg" />
     <Content Include="Icons\views.svg" />
     <Content Include="Images\Authors\jason-law.jpg" />
@@ -245,6 +251,10 @@
     <Content Include="Views\Blogs\Article.cshtml" />
     <Content Include="Views\Authors\Index.cshtml" />
     <Content Include="Views\Authors\Profile.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Dashboard.cshtml" />
+    <Content Include="Views\Shared\_AccountLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

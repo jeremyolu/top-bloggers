@@ -1,0 +1,41 @@
+﻿@model TopBloggers.Models.Author
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div id="login">
+    <div id="login-container" class="container" data-aos="fade-left">
+        <div class="author-form-container">
+            <h1>Login</h1>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="input-area">
+                    @Html.LabelFor(model => model.Email)
+                    <i class="fa fa-asterisk error"></i>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input-contact-field", placeholder = "enter email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-error" })
+                </div>
+                <div class="input-area">
+                    @Html.LabelFor(model => model.Password)
+                    <i class="fa fa-asterisk error"></i>
+                    @Html.EditorFor(model => model.Password, null, new { htmlAttributes = new { @class = "input-contact-field", placeholder = "enter password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "validation-error" })
+                </div>
+                <p class="error">@ViewBag.Message</p>
+                <hr>
+
+                <input type="submit" value="Login" class="button submit-btn" />
+
+                <div class="signup-container">
+                    <p>Don't have an account? @Html.ActionLink("Register", "Register")</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

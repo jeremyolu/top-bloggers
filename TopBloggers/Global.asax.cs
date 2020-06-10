@@ -7,6 +7,7 @@ using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Repositories.Authors;
 using TopBloggers.Repositories.Blogs;
+using TopBloggers.Services.Account;
 using TopBloggers.Services.Authors;
 using TopBloggers.Services.Blogs;
 
@@ -30,6 +31,7 @@ namespace TopBloggers
             //Services
             builder.RegisterType<BlogService>().As<IBlogService>();
             builder.RegisterType<AuthorService>().As<IAuthorService>();
+            builder.RegisterType<AccountService>().As<IAccountService>();
 
             //Repositories
             builder.RegisterType<BlogRepository>().As<IBlogRepository>();
