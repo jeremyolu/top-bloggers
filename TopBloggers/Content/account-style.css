@@ -7,3 +7,51 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
+
+/*CREATE*/
+label {
+    font-weight: bold;
+    color: #000000;
+}
+
+.input-create-field {
+    font-family: 'Oswald', sans-serif;
+    background: #f1f1f1;
+    width: 100%;
+    letter-spacing: 2px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+}
+
+.input-create-field:focus {
+    background-color: #DDDDDD;
+    outline: none;
+    transition: 3s;
+}
+
+span.validation-error, .error {
+    color: #FF0000;
+}
+
+.select {
+    font-family: 'Oswald', sans-serif;
+    background: #f1f1f1;
+    width: 100%;
+    letter-spacing: 2px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+}
+
+.select:focus {
+    background-color: #DDDDDD;
+    outline: none;
+    transition: 3s;
+}
+
+option {
+    font-size: 17px;
+}
