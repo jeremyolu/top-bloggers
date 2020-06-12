@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Models;
+using TopBloggers.ViewModels.Account;
 
 namespace TopBloggers.Controllers
 {
@@ -65,10 +67,71 @@ namespace TopBloggers.Controllers
 
             if (email == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Login");
             }
 
             var model = _accountService.GetAuthorDashboard(email);
+
+            return View(model);
+        }
+
+        public ActionResult Create()
+        {
+            var email = (string)Session["AUTHOR"];
+            var author = _accountService.GetAuthorDashboard(email).Author;
+            var list = _accountService.GetCategoryList().Categories;
+
+            if (email == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var model = new NewBlogArticleViewModel
+            {
+                Author = author,
+                Categories = list
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Title,Description,Text,AuthorID,CategoryID")] Article article, HttpPostedFileWrapper file)
+        {
+            var email = (string)Session["AUTHOR"];
+            var author = _accountService.GetAuthorDashboard(email).Author;
+            var list = _accountService.GetCategoryList().Categories;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _accountService.CreateNewBlogArticle(article, file);
+
+                    return RedirectToAction("Dashboard");
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
+            var model = new NewBlogArticleViewModel
+            {
+                Author = author,
+                Categories = list
+            };
 
             return View(model);
         }

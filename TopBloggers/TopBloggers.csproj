@@ -181,6 +181,7 @@
     <Compile Include="Services\Helpers\TextHelperService.cs" />
     <Compile Include="ViewModels\Account\AddAuthorViewModel.cs" />
     <Compile Include="ViewModels\Account\AuthorAccountViewModel.cs" />
+    <Compile Include="ViewModels\Account\NewBlogArticleViewModel.cs" />
     <Compile Include="ViewModels\Authors\AuthorsListViewModel.cs" />
     <Compile Include="ViewModels\Authors\AuthorViewModel.cs" />
     <Compile Include="ViewModels\Blogs\BlogArticleViewModel.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Dashboard.cshtml" />
     <Content Include="Views\Shared\_AccountLayout.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

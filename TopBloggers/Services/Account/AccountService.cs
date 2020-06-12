@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -69,6 +68,41 @@ namespace TopBloggers.Services.Account
             };
 
             return model;
+        }
+
+        public NewBlogArticleViewModel GetCategoryList()
+        {
+            var categories = _topBloggersDb.Categories.ToList();
+
+            var model = new NewBlogArticleViewModel
+            {
+                Categories = categories
+            };
+
+            return model;
+        }
+
+        public Article CreateNewBlogArticle(Article article, HttpPostedFileWrapper file)
+        {
+            if (IsImage(file.ContentType))
+            {
+                var imageName = Path.GetFileName(file.FileName);
+                var formattedImgTitle = $"{article.Title}-{imageName}";
+
+                var imagesPath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/BlogArticles/"), formattedImgTitle);
+                file.SaveAs(imagesPath);
+
+                article.Image = formattedImgTitle;
+            }
+
+            article.Likes = 0;
+            article.Views = 0;
+            article.CreatedDate = DateTime.Today;
+
+            _topBloggersDb.Articles.Add(article);
+            _topBloggersDb.SaveChanges();
+
+            return article;
         }
 
         private bool IsImage(string type)

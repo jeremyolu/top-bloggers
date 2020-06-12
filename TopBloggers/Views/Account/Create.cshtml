@@ -1,0 +1,50 @@
+﻿@model TopBloggers.ViewModels.Account.NewBlogArticleViewModel
+
+@{
+    ViewBag.Title = "Create New Blog";
+    Layout = "../Shared/_AccountLayout.cshtml";
+}
+
+<div id="create">
+    <div id="create-article-container" class="container" data-aos="fade-left">
+        <div class="create-form-container">
+            <h1>Create New Blog Article</h1>
+            @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="input-area">
+                    @Html.LabelFor(model => model.Article.Title)
+                    <i class="fa fa-asterisk error"></i>
+                    @Html.EditorFor(model => model.Article.Title, new { htmlAttributes = new { @class = "input-create-field", placeholder = "enter title" } })
+                    @Html.ValidationMessageFor(model => model.Article.Title, "", new { @class = "validation-error" })
+                </div>
+                <div class="input-area">
+                    @Html.LabelFor(model => model.Article.Description)
+                    <i class="fa fa-asterisk error"></i>
+                    @Html.TextAreaFor(model => model.Article.Description, 5, 5, htmlAttributes: new { @class = "input-create-field", @rows = "6", placeholder = "enter description" })
+                    @Html.ValidationMessageFor(model => model.Article.Description, "", new { @class = "validation-error" })
+                </div>
+                <div class="input-area">
+                    @Html.LabelFor(model => model.Article.Text)
+                    <i class="fa fa-asterisk error"></i>
+                    @Html.TextAreaFor(model => model.Article.Text, 20, 50, htmlAttributes: new { @class = "input-create-field", @rows = "6", placeholder = "enter text" })
+                    @Html.ValidationMessageFor(model => model.Article.Text, "", new { @class = "validation-error" })
+                </div>
+                <div class="input-area custom-select">
+                    @Html.LabelFor(model => model.Article.CategoryID)
+                    @Html.DropDownListFor(model => model.Article.CategoryID, new SelectList(Model.Categories, "CategoryID", "Name"), "Select Article Category", new { @class = "select" })
+                    @Html.ValidationMessageFor(model => model.Article.CategoryID, "", new { @class = "validation-error" })
+                </div>
+                <div class="input-area">
+                    @Html.LabelFor(model => model.Article.Image)<br />
+                    <input type="file" name="file" title="uploading an image will help boost your views and likes" />
+                </div>
+                <input type="hidden" id="Article.AuthorID" name="Article.AuthorID" value="@Model.Author.AuthorID">
+                <p class="error">@ViewBag.Message</p>
+
+                <input type="submit" value="Create" class="button submit-btn" />
+            }
+        </div>
+    </div>
+</div>
+
