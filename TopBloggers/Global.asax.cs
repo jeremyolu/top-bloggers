@@ -7,9 +7,11 @@ using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Repositories.Authors;
 using TopBloggers.Repositories.Blogs;
+using TopBloggers.Repositories.Categories;
 using TopBloggers.Services.Account;
 using TopBloggers.Services.Authors;
 using TopBloggers.Services.Blogs;
+using TopBloggers.Services.Category;
 
 namespace TopBloggers
 {
@@ -32,10 +34,12 @@ namespace TopBloggers
             builder.RegisterType<BlogService>().As<IBlogService>();
             builder.RegisterType<AuthorService>().As<IAuthorService>();
             builder.RegisterType<AccountService>().As<IAccountService>();
+            builder.RegisterType<CategoryService>().As<ICategoryService>();
 
             //Repositories
             builder.RegisterType<BlogRepository>().As<IBlogRepository>();
             builder.RegisterType<AuthorRepository>().As<IAuthorRepository>();
+            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
 
             var container = builder.Build();
 

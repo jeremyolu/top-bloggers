@@ -6,6 +6,6 @@ namespace TopBloggers.ViewModels.Account
     public class NewBlogArticleViewModel : AuthorAccountViewModel
     {
         public Article Article { get; set; }
-        public List<Category> Categories { get; set; }
+        public List<Models.Category> Categories { get; set; }
     }
 }

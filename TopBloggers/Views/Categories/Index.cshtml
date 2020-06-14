@@ -1,0 +1,43 @@
+﻿@model TopBloggers.ViewModels.Category.CategoryListViewModel
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<div id="categories">
+<header data-aos="fade-right">
+    <h1>SEARCH CATEGORIES</h1>
+    <h3>Search for various categories</h3>
+    <form>
+        <input type="text" name="search" class="search-textbox" placeholder="search categories" />
+    </form>
+</header>
+    <div id="category-search-container" class="container" data-aos="fade-left">
+        @if (Model.Search.IsEmpty())
+        {
+            <h4 id="article-count">Total Categories: @Model.TotalCategories</h4>
+        }
+        else
+        {
+            <h4 id="category-search">searched category term: "@Model.Search"</h4>
+            <h4 id="category-count">Total Results: @Model.TotalCategories</h4>
+        }
+        <hr />
+        <section id="search-category-list-container">
+            @if (Model.Categories.Any())
+            {
+                <ul>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li class="category-list-item"><a href="/categories/cat/@category.CategoryID">@category.Name</a></li>
+                        <div class="category-description"><p>@category.Description</p></div>
+                    }
+                </ul>
+            }
+            else
+            {
+                <h2>No Categories Found</h2>
+            }
+        </section>
+    </div>
+</div>
