@@ -369,7 +369,7 @@ h3.author-titles {
     grid-column-gap: 10px;
 }
 
-/*CATEGORY*/
+/*CATEGORIES*/
 #categories header h1 {
     font-size: 50px;
     font-weight: bold;
@@ -405,6 +405,26 @@ li.category-list-item a:hover {
 
 .category-description {
     margin-bottom: 5px;
+}
+
+/*CATEGORY*/
+#category header h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#category header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Images/home-background.jpg') no-repeat center/cover;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
 }
 
 /*REGISTER*/
