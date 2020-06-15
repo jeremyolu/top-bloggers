@@ -1,0 +1,35 @@
+﻿@model TopBloggers.ViewModels.Category.CategoryViewModel
+
+@{
+    ViewBag.Title = Model.Category.Name + " Articles";
+}
+
+<div id="category">
+<header data-aos="fade-right">
+    <h1>@Model.Category.Name</h1>
+</header>
+<section id="category-detail-container" class="container" data-aos="fade-left">
+    <h1>@Model.Category.Name</h1>
+    <h3>@Model.Category.Description</h3>
+    <hr />
+    @Html.ActionLink("Back to Categories", "Index")
+    <h2>@Model.Category.Name Articles</h2>
+    <div class="category-list-articles-section">
+        @if (Model.Articles.Any())
+        {
+            <ul class="category-articles">
+                @foreach (var article in Model.Articles)
+                {
+                    <li class="category-list-item"><a href="/blogs/article/@article.Url">@article.Title</a></li>
+                    <p>By: @article.Author.Name @article.Author.Surname</p>
+                    @article.CreatedDate.ToShortDateString()
+                }
+            </ul>
+        }
+        else
+        {
+            <h2>No @Model.Category.Name Articles</h2>
+        }
+    </div>
+</section>
+</div>

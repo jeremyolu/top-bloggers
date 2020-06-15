@@ -26,13 +26,13 @@
         <section id="search-category-list-container">
             @if (Model.Categories.Any())
             {
-                <ul>
-                    @foreach (var category in Model.Categories)
-                    {
-                        <li class="category-list-item"><a href="/categories/cat/@category.CategoryID">@category.Name</a></li>
-                        <div class="category-description"><p>@category.Description</p></div>
-                    }
-                </ul>
+            <ul>
+                @foreach (var category in Model.Categories)
+                {
+                    <li class="category-list-item">@Html.ActionLink(category.Name, "Cat", new { id = category.CategoryID })</li>
+                    <p>@category.Description</p>
+        }
+            </ul>
             }
             else
             {

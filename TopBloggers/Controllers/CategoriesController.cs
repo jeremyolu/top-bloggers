@@ -19,9 +19,11 @@ namespace TopBloggers.Controllers
             return View(model);
         }
 
-        public ActionResult Cat()
+        public ActionResult Cat(int id)
         {
-            return View();
+            var model = _categoryService.GetCategoryViewModel(id);
+
+            return View(model);
         }
     }
 }
