@@ -14,17 +14,22 @@ namespace TopBloggers.Services.Account
         private TopBloggersDB _topBloggersDb;
 
         private IAuthorRepository _authorRepository;
+        private ISecurirtyService _securirtyService;
 
-        public AccountService(IAuthorRepository authorRepository)
+        public AccountService(IAuthorRepository authorRepository, ISecurirtyService securirtyService)
         {
             _authorRepository = authorRepository;
+            _securirtyService = securirtyService;
             _topBloggersDb = new TopBloggersDB();
         }
 
         public Author Login(Author author)
         {
+            var encryptedPassword = _authorRepository.GetAuthorByEmail(author.Email).Password;
+            var decryptedPassword = _securirtyService.Decrypt(encryptedPassword);
+
             var user = _topBloggersDb.Authors.SingleOrDefault(a =>
-                a.Email == author.Email && a.Password == author.Password);
+                a.Email == author.Email && decryptedPassword == author.Password);
 
             return user;
         }
@@ -46,6 +51,8 @@ namespace TopBloggers.Services.Account
                         author.ProfileImage = formattedImgTitle;
                     }
                 }
+
+                author.Password = _securirtyService.Encrypt(author.Password);
             }
             catch (Exception e)
             {
