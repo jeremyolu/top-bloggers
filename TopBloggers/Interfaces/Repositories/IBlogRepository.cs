@@ -11,5 +11,7 @@ namespace TopBloggers.Interfaces.Repositories
         List<Article> GetLatestArticlesForCurrentMonth();
         List<Article> GetArticlesByAuthorId(int id);
         List<Article> GetArticlesByCategoryId(int id);
+        void IncrementArticleView(Article article);
+        void IncrementArticleLike(Article article);
     }
 }
