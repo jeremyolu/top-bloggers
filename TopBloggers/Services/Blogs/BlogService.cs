@@ -6,6 +6,7 @@ using System.Threading;
 using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Models;
+using TopBloggers.Settings.Helpers;
 using TopBloggers.ViewModels.Blogs;
 using TopBloggers.ViewModels.Home;
 
@@ -36,10 +37,10 @@ namespace TopBloggers.Services.Blogs
 
             var model = new HomeArticlesViewModel
             {
-                TopArticles = topBlogArticles.GenerateUrls(),
-                LatestArticles = latestBlogArticles.GenerateUrls(),
-                FeaturedArticles = DetermineFeaturedArticle(featuredBlogs.GenerateUrls()),
-                PopularAuthors = DeterminePopularAuthors(popularAuthors).GenerateUrls()
+                TopArticles = topBlogArticles.GenerateArticleUrls(),
+                LatestArticles = latestBlogArticles.GenerateArticleUrls(),
+                FeaturedArticles = DetermineFeaturedArticle(featuredBlogs.GenerateArticleUrls()),
+                PopularAuthors = DeterminePopularAuthors(popularAuthors).GenerateAuthorUrls()
             };
 
             return model;
@@ -51,7 +52,7 @@ namespace TopBloggers.Services.Blogs
 
             var model = new BlogsListViewModel
             {
-                Articles = articles.GenerateUrls(),
+                Articles = articles.GenerateArticleUrls(),
                 Search = search,
                 TotalArticles = articles.Count
             };
@@ -87,8 +88,8 @@ namespace TopBloggers.Services.Blogs
                 AuthorUrl = authorUrl,
                 FormattedTitle = formatTitle,
                 BlogArticleUrl = formattedUrl,
-                AuthorArticles = authorArticles.GenerateUrls(),
-                RelatedArticles = relatedArticles.GenerateUrls()
+                AuthorArticles = authorArticles.GenerateArticleUrls(),
+                RelatedArticles = relatedArticles.GenerateArticleUrls()
             };
 
             return model;
@@ -134,47 +135,6 @@ namespace TopBloggers.Services.Blogs
             }
 
             return popular;
-        }
-    }
-
-    public static class LinqExtension
-    {
-        public static List<Article> GenerateUrls(this List<Article> articles)
-        {
-            foreach (var article in articles)
-            {
-                article.Url = $"{article.BlogArticleID}={GenerateFriendlyUrl(article.Title)}";
-            }
-
-            return articles;
-        }
-
-        public static List<Author> GenerateUrls(this List<Author> authors)
-        {
-            foreach (var author in authors)
-            {
-                author.AuthorUrl = $"{author.AuthorID}-{author.Name}{author.Surname}".ToLower();
-            }
-
-            return authors;
-        }
-
-        public static List<Article> ShortenDescription(this List<Article> articles)
-        {
-            foreach (var article in articles)
-            {
-                // shorten description to prompt read more...
-                // article.Description = 
-            }
-
-            return articles;
-        }
-
-        private static string GenerateFriendlyUrl(string title)
-        {
-            var url = title.Replace(" ", "-").ToLower();
-
-            return Regex.Replace(url, @"[^\w-]|_", string.Empty);
         }
     }
 }
