@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using TopBloggers.Interfaces.Services;
 
 namespace TopBloggers.Controllers
@@ -25,11 +26,6 @@ namespace TopBloggers.Controllers
             var model = _authorService.GetAuthorViewModel(id);
 
             if (id != model.Author?.AuthorID || name != model.Url)
-            {
-                return HttpNotFound();
-            }
-
-            if (string.IsNullOrEmpty(model.AuthorArticles[0].Url))
             {
                 return HttpNotFound();
             }
