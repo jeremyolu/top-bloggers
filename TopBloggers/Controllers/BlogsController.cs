@@ -31,5 +31,14 @@ namespace TopBloggers.Controllers
 
             return View(model);
         }
+
+        public ActionResult Like(int id, string title)
+        {
+            var blogModel = _blogService.GetBlogArticleViewModel(id);
+
+            _blogService.IncrementLike(blogModel.BlogArticle);
+
+            return RedirectToAction("Article", new { id = blogModel.BlogArticle.BlogArticleID, title = blogModel.FormattedTitle });
+        }
     }
 }
