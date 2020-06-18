@@ -285,6 +285,16 @@ hr.ma-line {
     border: none;
 }
 
+a.like {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.like:hover {
+    font-weight: bold;
+}
+
 .related-article-items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
