@@ -184,6 +184,7 @@
     <Compile Include="Services\Blogs\BlogService.cs" />
     <Compile Include="Services\Category\CategoryService.cs" />
     <Compile Include="Services\Helpers\TextHelperService.cs" />
+    <Compile Include="Settings\Helpers\Extensions.cs" />
     <Compile Include="ViewModels\Account\AddAuthorViewModel.cs" />
     <Compile Include="ViewModels\Account\AuthorAccountViewModel.cs" />
     <Compile Include="ViewModels\Account\NewBlogArticleViewModel.cs" />
@@ -209,6 +210,7 @@
     <Content Include="Icons\views.svg" />
     <Content Include="Images\Authors\jason-law.jpg" />
     <Content Include="Images\Authors\maresh-savarinka.jpg" />
+    <Content Include="Images\Authors\user-placeholder.png" />
     <Content Include="Images\BlogArticles\csharp-logo.png" />
     <Content Include="Images\BlogArticles\premier-league.jpg" />
     <Content Include="Images\home-background.jpg" />
@@ -271,7 +273,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="DataAccess\" />
     <Folder Include="Images\Backgrounds\" />
-    <Folder Include="Settings\" />
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>

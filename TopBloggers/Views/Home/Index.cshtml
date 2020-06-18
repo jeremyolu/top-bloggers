@@ -20,13 +20,13 @@
                     foreach (var article in Model.TopArticles)
                     {
                         <article class="article-listing-item">
-                            <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
+                            <h5 class="article-listing-author-date"><a href="/authors/profile/@article.AuthorUrl">By: @article.Author.Name @article.Author.Surname</a>- @article.CreatedDate.ToShortDateString()</h5>
                             <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up"/></a>
                             <h3><a class="article-listing-title-link" href="/blogs/article/@article.Url">@article.Title</a></h3>
-                            <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                            <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">read more</a></span></p>
                             <span><i class="fa fa-eye"></i> @article.Views views <i class="fa fa-thumbs-o-up"></i> @article.Likes likes</span>
                             <h5 class="article-listing-category">Category</h5>
-                            <p class="article-listing-category-name">@article.Category.Name</p>
+                            @Html.ActionLink(article.Category.Name, "Cat", "Categories",new { id = article.CategoryID }, null )
                         </article>
                     }
                 }
@@ -45,13 +45,13 @@
                     foreach (var article in Model.LatestArticles)
                     {
                         <article class="article-listing-item">
-                            <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
+                             <h5 class="article-listing-author-date"><a href="/authors/profile/@article.AuthorUrl">By: @article.Author.Name @article.Author.Surname</a>- @article.CreatedDate.ToShortDateString()</h5>
                             <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" /></a>
                             <h3><a class="article-listing-title-link" href="/blogs/article/@article.Url">@article.Title</a></h3>
-                            <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                            <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">read more</a></span></p>
                             <span><i class="fa fa-eye"></i> @article.Views views <i class="fa fa-thumbs-o-up"></i> @article.Likes likes</span>
                             <h5 class="article-listing-category">Category</h5>
-                            <p class="article-listing-category-name">@article.Category.Name</p>
+                            @Html.ActionLink(article.Category.Name, "Cat", "Categories",new { id = article.CategoryID }, null )
                         </article>
                     }
                 }
@@ -70,13 +70,13 @@
                     foreach (var article in Model.FeaturedArticles)
                     {
                         <article class="article-listing-item">
-                            <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
+                             <h5 class="article-listing-author-date"><a href="/authors/profile/@article.AuthorUrl">By: @article.Author.Name @article.Author.Surname</a>- @article.CreatedDate.ToShortDateString()</h5>
                             <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img" alt="@article.Image" data-aos="fade-up" /></a>
                             <h3><a class="article-listing-title-link" href="/blogs/article/@article.Url">@article.Title</a></h3>
-                            <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                            <p class="article-listing-description">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">read more</a></span></p>
                             <span><i class="fa fa-eye"></i> @article.Views views <i class="fa fa-thumbs-o-up"></i> @article.Likes likes</span>
                             <h5 class="article-listing-category">Category</h5>
-                            <p class="article-listing-category-name">@article.Category.Name</p>
+                           @Html.ActionLink(article.Category.Name, "Cat", "Categories",new { id = article.CategoryID }, null )
                         </article>
                     }
                 }
@@ -94,8 +94,9 @@
                 {
                     foreach (var author in Model.PopularAuthors)
                     {
+                        var authorProfileImg = author.ProfileImage ?? "user-placeholder.png";
                         <div class="author-item" data-aos="fade-left">
-                            <a href="/authors/profile/@author.AuthorUrl"><img src="~/Images/Authors/@author.ProfileImage" class="author-img" alt="@author.Name-@author.Surname-author-image" /></a>
+                            <a href="/authors/profile/@author.AuthorUrl"><img src="~/Images/Authors/@authorProfileImg" class="author-img" alt="@author.Name-@author.Surname-author-image" /></a>
                             <div class="author-item-details">
                                 <a href="/authors/profile/@author.AuthorUrl"><h2>@author.Name @author.Surname</h2></a>
                                 <h4>Articles: @author.Articles.Count</h4>
