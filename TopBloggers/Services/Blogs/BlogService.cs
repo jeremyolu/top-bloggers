@@ -92,7 +92,14 @@ namespace TopBloggers.Services.Blogs
                 RelatedArticles = relatedArticles.GenerateArticleUrls()
             };
 
+            _blogRepository.IncrementArticleView(blogArticle);
+
             return model;
+        }
+
+        public void IncrementLike(Article article)
+        {
+            _blogRepository.IncrementArticleLike(article);
         }
 
         private string CapitalizeTitle(string title)
