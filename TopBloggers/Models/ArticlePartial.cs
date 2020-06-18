@@ -6,6 +6,7 @@ namespace TopBloggers.Models
     [MetadataType(typeof(ArticlePartial))]
     public partial class Article
     {
+        public string AuthorUrl { get; set; }
         public string Url { get; set; }
     }
 
