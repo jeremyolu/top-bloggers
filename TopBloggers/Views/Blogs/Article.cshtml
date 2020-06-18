@@ -12,7 +12,7 @@
                 <h1 class="article-title">@Model.BlogArticle.Title</h1>
                 <h4 class="article-author"><a href="/authors/profile/@Model.AuthorUrl">By @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname</a> - @Model.BlogArticle.CreatedDate.ToShortDateString()</h4>
                 <p class="article-description">@Model.BlogArticle.Description</p>
-                <span><i class="fa fa-eye"></i> @Model.BlogArticle.Views views <i class="fa fa-thumbs-o-up"></i> @Model.BlogArticle.Likes likes</span>
+                <span><i class="fa fa-eye"></i> @Model.BlogArticle.Views views <i class="fa fa-thumbs-o-up"></i> <a id="@Model.BlogId-like-link" class="like" href="/blogs/like/@Model.BlogId">@Model.BlogArticle.Likes likes</a></span>
                 <div class="article-text-section">
                     <p class="article-text">@Model.BlogArticle.Text</p>
                 </div>
