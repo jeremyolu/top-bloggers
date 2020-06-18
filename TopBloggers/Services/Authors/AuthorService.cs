@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
-using TopBloggers.Services.Blogs;
+using TopBloggers.Settings.Helpers;
 using TopBloggers.ViewModels.Authors;
 
 namespace TopBloggers.Services.Authors
@@ -23,7 +23,7 @@ namespace TopBloggers.Services.Authors
 
             var model = new AuthorsListViewModel
             {
-                Authors = authors.GenerateUrls(),
+                Authors = authors.GenerateAuthorUrls(),
                 Search = search,
                 TotalAuthors = authors.Count
             };
@@ -48,7 +48,7 @@ namespace TopBloggers.Services.Authors
             {
                 Author = author,
                 TotalViews = totalViews,
-                AuthorArticles = authorArticles.GenerateUrls(),
+                AuthorArticles = authorArticles.GenerateArticleUrls(),
                 Url = authorFormattedName
             };
 
