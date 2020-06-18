@@ -1,6 +1,7 @@
 ﻿using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Interfaces.Services;
 using TopBloggers.Services.Blogs;
+using TopBloggers.Settings.Helpers;
 using TopBloggers.ViewModels.Category;
 
 namespace TopBloggers.Services.Category
@@ -39,7 +40,7 @@ namespace TopBloggers.Services.Category
             var model = new CategoryViewModel
             {
                 Category = category,
-                Articles = categoryArticles.GenerateUrls()
+                Articles = categoryArticles.GenerateArticleUrls()
             };
 
             return model;
