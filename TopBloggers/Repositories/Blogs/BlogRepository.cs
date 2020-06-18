@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using TopBloggers.Interfaces.Repositories;
 using TopBloggers.Models;
@@ -43,6 +44,22 @@ namespace TopBloggers.Repositories.Blogs
         public List<Article> GetArticlesByCategoryId(int id)
         {
             return _topBloggersDb.Articles.Where(ac => ac.CategoryID == id).ToList();
+        }
+
+        public void IncrementArticleView(Article article)
+        {
+            article.Views += 1;
+
+            _topBloggersDb.Entry(article).State = EntityState.Modified;
+            _topBloggersDb.SaveChanges();
+        }
+
+        public void IncrementArticleLike(Article article)
+        {
+            article.Likes += 1;
+
+            _topBloggersDb.Entry(article).State = EntityState.Modified;
+            _topBloggersDb.SaveChanges();
         }
     }
 }
