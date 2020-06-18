@@ -172,6 +172,7 @@ section#search-articles-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+    margin-bottom: 30px;
 }
 
 #article-count {
@@ -230,9 +231,12 @@ a.read-more-link {
     align-items: center;
 }
 
+p.article-description {
+    font-weight: bold;
+}
+
 p.article-text {
-    font-size: 20px;
-    letter-spacing: 2px;
+    font-size: 23px;
 }
 
 .article-contents {
