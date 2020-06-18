@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Security;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
@@ -35,6 +36,7 @@ namespace TopBloggers
             builder.RegisterType<AuthorService>().As<IAuthorService>();
             builder.RegisterType<AccountService>().As<IAccountService>();
             builder.RegisterType<CategoryService>().As<ICategoryService>();
+            builder.RegisterType<SecurityService>().As<ISecurirtyService>();
 
             //Repositories
             builder.RegisterType<BlogRepository>().As<IBlogRepository>();

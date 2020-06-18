@@ -149,6 +149,7 @@
     <Compile Include="Interfaces\Services\IAuthorService.cs" />
     <Compile Include="Interfaces\Services\IBlogService.cs" />
     <Compile Include="Interfaces\Services\ICategoryService.cs" />
+    <Compile Include="Interfaces\Services\ISecurirtyService.cs" />
     <Compile Include="Models\Article.cs">
       <DependentUpon>TopBloggersModel.tt</DependentUpon>
     </Compile>
@@ -180,6 +181,7 @@
     <Compile Include="Repositories\Blogs\BlogRepository.cs" />
     <Compile Include="Repositories\Categories\CategoryRepository.cs" />
     <Compile Include="Services\Account\AccountService.cs" />
+    <Compile Include="Services\Account\SecurityService.cs" />
     <Compile Include="Services\Authors\AuthorService.cs" />
     <Compile Include="Services\Blogs\BlogService.cs" />
     <Compile Include="Services\Category\CategoryService.cs" />
