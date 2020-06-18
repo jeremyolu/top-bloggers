@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TopBloggers.Models;
 
@@ -6,17 +8,19 @@ namespace TopBloggers.Settings.Helpers
 {
     public static class Extensions
     {
-        public static List<Article> GenerateUrls(this List<Article> articles)
+        public static List<Article> GenerateArticleUrls(this List<Article> articles)
         {
             foreach (var article in articles)
             {
+                article.Description = ShortenArticleDescription(article.Description, 25);
                 article.Url = $"{article.BlogArticleID}={GenerateFriendlyUrl(article.Title)}";
+                article.AuthorUrl = $"{article.Author.AuthorID}-{article.Author.Name}{article.Author.Surname}".ToLower();
             }
 
             return articles;
         }
 
-        public static List<Author> GenerateUrls(this List<Author> authors)
+        public static List<Author> GenerateAuthorUrls(this List<Author> authors)
         {
             foreach (var author in authors)
             {
@@ -26,15 +30,26 @@ namespace TopBloggers.Settings.Helpers
             return authors;
         }
 
-        public static List<Article> ShortenDescription(this List<Article> articles)
+        public static string ShortenArticleDescription(this String description, int wordCount)
         {
-            foreach (var article in articles)
+            if (wordCount < 0)
             {
-                // shorten description to prompt read more...
-                // article.Description = 
+                throw new ArgumentOutOfRangeException("wordCount should be greater than or equal to 0");
             }
 
-            return articles;
+            if (wordCount == 0)
+            {
+                return string.Empty;
+            }
+
+            var words = description.Split(' ');
+
+            if (words.Length <= wordCount)
+            {
+                return description;
+            }
+
+            return string.Join(" ", words.Take(wordCount)) + "...";
         }
 
         private static string GenerateFriendlyUrl(string title)
