@@ -1,8 +1,7 @@
 ﻿@model TopBloggers.ViewModels.Blogs.BlogArticleViewModel
 
 @{
-    var metaTitle = Model.BlogArticle.Title;
-    ViewBag.Title = metaTitle;
+    ViewBag.Title = Model.BlogArticle.Title;
 }
 
 <div id="article">
@@ -12,7 +11,7 @@
                 <img src="~/Images/BlogArticles/@Model.BlogArticle.Image" class="article-img" alt="@Model.BlogArticle.Image" />
                 <h1 class="article-title">@Model.BlogArticle.Title</h1>
                 <h4 class="article-author"><a href="/authors/profile/@Model.AuthorUrl">By @Model.BlogArticle.Author.Name @Model.BlogArticle.Author.Surname</a> - @Model.BlogArticle.CreatedDate.ToShortDateString()</h4>
-                <p>@Model.BlogArticle.Description</p>
+                <p class="article-description">@Model.BlogArticle.Description</p>
                 <span><i class="fa fa-eye"></i> @Model.BlogArticle.Views views <i class="fa fa-thumbs-o-up"></i> @Model.BlogArticle.Likes likes</span>
                 <div class="article-text-section">
                     <p class="article-text">@Model.BlogArticle.Text</p>
@@ -25,10 +24,10 @@
                     foreach (var article in Model.AuthorArticles)
                     {
                         <article>
-                            <h3 class="article-listing-title-ma">@article.Title</h3>
+                            <h3 class="article-listing-title-ma"> <a href="/blogs/article/@article.Url">@article.Title</a></h3>
                             <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img-ma" alt="@article.Image" data-aos="fade-up"/></a>
-                            <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
-                            <p class="article-listing-description-ma">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                            <h5 class="article-listing-author-date"> <a href="/authors/profile/@article.AuthorUrl">By: @article.Author.Name @article.Author.Surname</a>- @article.CreatedDate.ToShortDateString()</h5>
+                            <p class="article-listing-description-ma">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">read more</a></span></p>
                             <hr class="ma-line"/>
                         </article>
                     }
@@ -51,8 +50,8 @@
                             <article>
                                 <h5 class="article-listing-author-date">By: @article.Author.Name @article.Author.Surname - @article.CreatedDate.ToShortDateString()</h5>
                                 <a href="/blogs/article/@article.Url"><img src="~/Images/BlogArticles/@article.Image" class="blog-img-ma" alt="@article.Image" data-aos="fade-up" /></a>
-                                <h3 class="article-listing-title">@article.Title</h3>
-                                <p class="article-listing-description-ma">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">...read more</a></span></p>
+                                <h3 class="article-listing-title"> <a href="/blogs/article/@article.Url">@article.Title</a></h3>
+                                <p class="article-listing-description-ma">@article.Description <span class="read-more"><a class="read-more-link" href="/blogs/article/@article.Url">read more</a></span></p>
                             </article>
                         }
                     }

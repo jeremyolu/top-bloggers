@@ -30,7 +30,7 @@
                     foreach (var author in Model.Authors)
                     {
                         <div class="author-item" data-aos="fade-left">
-                        <a href="/authors/@author.AuthorUrl"><img src="~/Images/Authors/@author.ProfileImage" class="author-img" alt="@author.Name-@author.Surname-author-image" /></a>
+                        <a href="/authors/profile/@author.AuthorUrl"><img src="~/Images/Authors/@author.ProfileImage" class="author-img" alt="@author.Name-@author.Surname-author-image" /></a>
                             <div class="author-item-details">
                                 <a href="/authors/profile/@author.AuthorUrl"><h2>@author.Name @author.Surname</h2></a>
                                 <h4>Articles: @author.Articles.Count</h4>
